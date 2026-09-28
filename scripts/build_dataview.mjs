@@ -55,10 +55,10 @@ async function main() {
         
         const isNotDraft = fm.draft !== true && fm.draft !== 'true';
 
-        // 1. プロジェクト用 (WHERE type = "project" AND contains(tags, "進捗/2_調査中") AND draft != true)
+        // 1. プロジェクト用 (WHERE type = "project" AND status = "調査中" AND draft != true)
         if (
             fm.type === 'project' && 
-            tags.includes('進捗/2_調査中') && 
+            fm.status === '調査中' && 
             isNotDraft
         ) {
           projects.push({
@@ -69,10 +69,10 @@ async function main() {
           });
         }
 
-        // 2. アーカイブ用 (WHERE (contains(tags, "進捗/3_完了") OR status = "evergreen" OR status = "完了" OR contains(tags, "status/evergreen")) AND draft != true)
+        // 2. アーカイブ用 (WHERE status = "完了" AND draft != true)
         const status = fm.status || '';
         if (
-            (tags.includes('進捗/3_完了') || status === 'evergreen' || status === '完了' || tags.includes('status/evergreen')) &&
+            status === '完了' &&
             isNotDraft
         ) {
           archives.push({
