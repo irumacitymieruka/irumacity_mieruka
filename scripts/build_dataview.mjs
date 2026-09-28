@@ -6,8 +6,11 @@ import matter from 'gray-matter';
 const targetFile = path.resolve('content/index.md');
 const notesDir = path.resolve('content/10_Notes');
 
-const START_MARKER = '<!-- DATAVIEW_PROJECT_START -->';
-const END_MARKER = '<!-- DATAVIEW_PROJECT_END -->';
+const START_MARKER_PROJECT = '<!-- DATAVIEW_PROJECT_START -->';
+const END_MARKER_PROJECT = '<!-- DATAVIEW_PROJECT_END -->';
+
+const START_MARKER_ARCHIVE = '<!-- DATAVIEW_ARCHIVE_START -->';
+const END_MARKER_ARCHIVE = '<!-- DATAVIEW_ARCHIVE_END -->';
 
 async function main() {
   try {
@@ -16,14 +19,7 @@ async function main() {
       return; // フェイルセーフ（クラッシュさせない）
     }
 
-    const indexContent = fs.readFileSync(targetFile, 'utf8');
-    const startIndex = indexContent.indexOf(START_MARKER);
-    const endIndex = indexContent.indexOf(END_MARKER);
-
-    if (startIndex === -1 || endIndex === -1) {
-      console.warn(`[WARN] Markers not found in ${targetFile}`);
-      return;
-    }
+    let indexContent = fs.readFileSync(targetFile, 'utf8');
 
     const files = [];
     function scanDir(dir) {
@@ -42,6 +38,8 @@ async function main() {
     scanDir(notesDir);
 
     const projects = [];
+    const archives = [];
+
     for (const file of files) {
       try {
         const content = fs.readFileSync(file, 'utf8');
@@ -49,17 +47,19 @@ async function main() {
         const parsed = matter(content);
         const fm = parsed.data;
 
-        // WHERE type = "project" AND contains(tags, "進捗/2_調査中") AND draft != true
+        // タグの標準化
         let tags = fm.tags || [];
         if (typeof tags === 'string') {
-            // カンマ区切りのタグ等にも対応させる
             tags = tags.split(',').map(t => t.trim());
         }
+        
+        const isNotDraft = fm.draft !== true && fm.draft !== 'true';
 
+        // 1. プロジェクト用 (WHERE type = "project" AND contains(tags, "進捗/2_調査中") AND draft != true)
         if (
             fm.type === 'project' && 
             tags.includes('進捗/2_調査中') && 
-            fm.draft !== true && fm.draft !== 'true'
+            isNotDraft
         ) {
           projects.push({
             title: fm.title || path.basename(file, '.md'),
@@ -68,36 +68,83 @@ async function main() {
             slug: path.basename(file, '.md')
           });
         }
+
+        // 2. アーカイブ用 (WHERE (contains(tags, "進捗/3_完了") OR status = "evergreen" OR status = "完了" OR contains(tags, "status/evergreen")) AND draft != true)
+        const status = fm.status || '';
+        if (
+            (tags.includes('進捗/3_完了') || status === 'evergreen' || status === '完了' || tags.includes('status/evergreen')) &&
+            isNotDraft
+        ) {
+          archives.push({
+            title: fm.title || path.basename(file, '.md'),
+            description: fm.description || '',
+            date: fm.date || fm.modified || fs.statSync(file).mtime,
+            slug: path.basename(file, '.md')
+          });
+        }
       } catch (err) {
         console.warn(`[WARN] Failed to parse ${file}: ${err.message}`);
       }
     }
 
-    // SORT file.mtime DESC (新しい順)
-    projects.sort((a, b) => new Date(b.mtime) - new Date(a.mtime));
+    // --- プロジェクトの置換処理 ---
+    const startIndexProj = indexContent.indexOf(START_MARKER_PROJECT);
+    const endIndexProj = indexContent.indexOf(END_MARKER_PROJECT);
 
-    let tableContent = '\n';
-    if (projects.length === 0) {
-      tableContent += '*現在、対象のプロジェクトはありません。*\n';
-      console.warn(`[INFO] No projects found matching the criteria.`);
-    } else {
-      tableContent += '| プロジェクト | 概要 |\n|---|---|\n';
-      for (const p of projects) {
-        // descriptionの改行をエスケープ
-        const safeDesc = p.description ? String(p.description).replace(/\r?\n/g, ' ') : '';
-        // [[リンク]] で記載すればQuartzが自動解決する
-        tableContent += `| [[${p.slug}|${p.title}]] | ${safeDesc} |\n`;
+    if (startIndexProj !== -1 && endIndexProj !== -1) {
+      // 新しい順にソート
+      projects.sort((a, b) => new Date(b.mtime) - new Date(a.mtime));
+
+      let tableContent = '\n';
+      if (projects.length === 0) {
+        tableContent += '*現在、対象のプロジェクトはありません。*\n';
+      } else {
+        tableContent += '| プロジェクト | 概要 |\n|---|---|\n';
+        for (const p of projects) {
+          const safeDesc = p.description ? String(p.description).replace(/\r?\n/g, ' ') : '';
+          tableContent += `| [[${p.slug}|${p.title}]] | ${safeDesc} |\n`;
+        }
       }
+      tableContent += '\n';
+
+      const before = indexContent.slice(0, startIndexProj + START_MARKER_PROJECT.length);
+      const after = indexContent.slice(endIndexProj);
+      indexContent = `${before}${tableContent}${after}`;
+      console.log(`[INFO] Replaced Project Dataview with ${projects.length} projects.`);
+    } else {
+      console.warn(`[WARN] Project Markers not found in ${targetFile}`);
     }
-    tableContent += '\n';
 
-    const before = indexContent.slice(0, startIndex + START_MARKER.length);
-    const after = indexContent.slice(endIndex);
-    
-    const newContent = `${before}${tableContent}${after}`;
+    // --- アーカイブの置換処理 ---
+    const startIndexArch = indexContent.indexOf(START_MARKER_ARCHIVE);
+    const endIndexArch = indexContent.indexOf(END_MARKER_ARCHIVE);
 
-    fs.writeFileSync(targetFile, newContent, 'utf8');
-    console.log(`[INFO] Successfully replaced Dataview in ${targetFile} with ${projects.length} projects.`);
+    if (startIndexArch !== -1 && endIndexArch !== -1) {
+      // 新しい順にソート
+      archives.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      let tableContent = '\n';
+      if (archives.length === 0) {
+        tableContent += '*現在、対象のアーカイブはありません。*\n';
+      } else {
+        tableContent += '| レポート名 | 概要 |\n|---|---|\n';
+        for (const a of archives) {
+          const safeDesc = a.description ? String(a.description).replace(/\r?\n/g, ' ') : '';
+          tableContent += `| [[${a.slug}|${a.title}]] | ${safeDesc} |\n`;
+        }
+      }
+      tableContent += '\n';
+
+      const before = indexContent.slice(0, startIndexArch + START_MARKER_ARCHIVE.length);
+      const after = indexContent.slice(endIndexArch);
+      indexContent = `${before}${tableContent}${after}`;
+      console.log(`[INFO] Replaced Archive Dataview with ${archives.length} archives.`);
+    } else {
+      console.warn(`[WARN] Archive Markers not found in ${targetFile}`);
+    }
+
+    // 最終的に書き込み
+    fs.writeFileSync(targetFile, indexContent, 'utf8');
 
   } catch (err) {
     console.warn(`[WARN] build_dataview.mjs failed with error: ${err.message}`);
