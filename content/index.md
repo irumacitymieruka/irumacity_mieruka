@@ -28,12 +28,15 @@ tags: [Dashboard]
 ## 👑 現在進行中のプロジェクト
 現在進行形で分析を進めている最中の検証プロジェクト群です。各プロジェクトの詳細はリンク先で確認できます。
 
+<!-- DATAVIEW_PROJECT_START -->
 ```dataview
 TABLE without id file.link AS "プロジェクト", description AS "概要"
 FROM "10_Notes"
 WHERE type = "project" AND contains(tags, "進捗/2_調査中") AND draft != true
 SORT file.mtime DESC
 ```
+
+<!-- DATAVIEW_PROJECT_END -->
 
 ---
 
