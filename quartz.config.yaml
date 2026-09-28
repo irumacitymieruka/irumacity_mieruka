@@ -9,9 +9,13 @@ configuration:
   locale: en-US
   baseUrl: irumacitymieruka.github.io/irumacity_mieruka
   ignorePatterns:
-    - private
-    - templates
+    - _inbox
+    - _templates
+    - _00_System
+    - _99_Legacy_Archive
     - .obsidian
+    - quartz-site
+    - obsidian-help
   theme:
     fontOrigin: googleFonts
     cdnCaching: true

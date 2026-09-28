@@ -1,3 +1,45 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+
+/* =========================================
+   Mobile Optimization (スマホ向け最適化)
+   ========================================= */
+
+@media all and (max-width: 800px) {
+  
+  /* 1. 本文の余白と行間の調整（詰まりすぎを解消） */
+  article {
+    p {
+      line-height: 1.8; /* 行間を少し広げて読みやすく */
+      margin-bottom: 1.5rem; /* 段落間の余白を確保 */
+    }
+  }
+
+  /* 2. タップ領域の拡大（指で押しやすく） */
+  .tags {
+    li {
+      margin: 0.3rem; /* タグ同士の間隔を空ける */
+      padding: 0.3rem 0.6rem;
+    }
+  }
+
+  a.internal {
+    padding: 0.1rem 0; /* 内部リンクのタップ判定を少し大きく */
+  }
+
+  /* 3. コールアウト（> [!info] 等）の表示調整 */
+  .callout {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border-radius: 8px; /* 角を少し丸めて柔らかい印象に */
+  }
+}
+
+/* =========================================
+   Global Typography (全体共通)
+   ========================================= */
+/* 日本語の文字間隔（カーニング）を自動調整し、文章を美しく見せる */
+body {
+  font-feature-settings: "palt"; 
+}

@@ -12,3 +12,12 @@ replit.nix
 
 content/quartz-site
 content/.obsidian
+content/_*/
+content/_00_System/
+content/_inbox/
+content/_templates/
+content/_99_Legacy_Archive/
+content/_Trash/
+content/01_指示/
+content/05_Daily_Notes/
+content/15_Ideas/
