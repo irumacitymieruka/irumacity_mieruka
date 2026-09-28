@@ -32,7 +32,7 @@ tags: [Dashboard]
 ```dataview
 TABLE without id file.link AS "プロジェクト", description AS "概要"
 FROM "10_Notes"
-WHERE type = "project" AND contains(tags, "進捗/2_調査中") AND draft != true
+WHERE type = "project" AND status = "調査中" AND draft != true
 SORT file.mtime DESC
 ```
 
@@ -40,60 +40,23 @@ SORT file.mtime DESC
 
 ---
 
-> [!info]- 📥 アイデア・未着手タスクのストック（クリックで展開）
-> まだ調査を開始していない「頭の中の疑問」やプレースホルダーです。着手する際に `#進捗/2_調査中` にタグを変更すると、上のアクティブリストに移動します。
-> ```dataview
-> TABLE description AS "概要", date AS "追加日"
-> FROM "10_Notes"
-> WHERE (contains(tags, "進捗/1_未着手") OR status = "inbox" OR status = "未着手" OR contains(tags, "status/inbox")) AND draft != true
-> SORT date DESC
-> ```
-
----
-
 ## 📂 検証完了レポート（アーカイブ）
 （※過去に調査が完了し、体系的にまとまったデータはこちらに格納しています）
+<!-- DATAVIEW_ARCHIVE_START -->
 ```dataview
 TABLE description AS "概要", date AS "完了日"
 FROM "10_Notes"
-WHERE (contains(tags, "進捗/3_完了") OR status = "evergreen" OR status = "完了" OR contains(tags, "status/evergreen")) AND draft != true
+WHERE status = "完了" AND draft != true
 SORT date DESC
 ```
+<!-- DATAVIEW_ARCHIVE_END -->
 
 ---
 
-## 📊 テーマ別ビュー（検証領域別）
-（MOCの軽量代替：タグによる自動収集）
+##### 今後着手予定リスト
+- [ ] 財政乖離の現状
+- [ ] いるまオープン議会のフォーマット化
 
-> [!tip]- 💰 テーマ別：財政・予算（クリックで展開）
-> ```dataview
-> TABLE description AS "概要", date AS "更新日"
-> FROM "10_Notes"
-> WHERE contains(tags, "テーマ/財政・予算") AND draft != true
-> SORT file.mtime DESC
-> ```
+---
 
-> [!tip]- 🏛️ テーマ別：ガバナンス・組織（クリックで展開）
-> ```dataview
-> TABLE description AS "概要", date AS "更新日"
-> FROM "10_Notes"
-> WHERE contains(tags, "テーマ/ガバナンス・組織") AND draft != true
-> SORT file.mtime DESC
-> ```
-
-> [!tip]- 📢 テーマ別：広報・シティプロモ（クリックで展開）
-> ```dataview
-> TABLE description AS "概要", date AS "更新日"
-> FROM "10_Notes"
-> WHERE contains(tags, "テーマ/広報・シティプロモ") AND draft != true
-> SORT file.mtime DESC
-> ```
-
-> [!tip]- 🔒 テーマ別：セキュリティ（クリックで展開）
-> ```dataview
-> TABLE description AS "概要", date AS "更新日"
-> FROM "10_Notes"
-> WHERE contains(tags, "テーマ/セキュリティ") AND draft != true
-> SORT file.mtime DESC
-> ```
 
