@@ -1,7 +1,6 @@
 ---
 title: PJ-情報発信ツールの役割定義と運用目的
 description: 各情報発信ツールの役割と使い分けの定義
-draft: true
 date: 2026-09-25
 type: project
 status: 完了

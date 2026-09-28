@@ -1,7 +1,7 @@
 ---
 title: "PJ-新校歌コンテストにおける選考プロセスとガバナンス構造の分析"
 description: "入間市「緑翠プロジェクト」新校歌コンテストにおける利益相反や審査体制のガバナンス上の課題を分析したノート"
-draft: false
+draft: true
 date: 2026-09-23
 type: project
 status: 調査中

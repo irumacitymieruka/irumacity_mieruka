@@ -1,7 +1,7 @@
 ---
 title: 茶畑テラス「茶の輪」事業の課題と現状
 description: 費用対効果の低さ、県外業者への委託、継続的な公費運営、当初目標からの乖離など、茶畑テラス事業の抱える複数の問題点についての整理。
-draft: false
+draft: true
 date: 2026-09-28
 type: project
 status: 完了
