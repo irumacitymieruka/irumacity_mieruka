@@ -1,7 +1,7 @@
 ---
 title: "PJ-採用システム個人情報漏えい事案の構造化とガバナンス検証"
 description: "入間市職員採用試験（動画投稿面接）に利用しているシステムでの不正アクセスによる個人情報漏えい事案の事実整理とガバナンス上の課題分析。"
-draft: true
+draft: false
 date: 2026-09-25
 updated: 2026-09-27
 type: project
@@ -40,4 +40,12 @@ tags:
 * 二次被害の確認は「現時点において」と限定されており、メールアドレスや電話番号が含まれている以上、今後のフィッシング詐欺等に対する継続的かつ具体的な注意喚起の仕組みが市側に存在しているかが論点となる。
 
 ## 🔗 関連資料・子ノート
+> [!info]- 紐づく検証ノート（本記事を親とするノート一覧）
+> ``dataview
+> LIST 
+>     "📅 " + dateformat(file.mtime, "MM/dd") + " ｜ 🏷️ " + join(tags, ", ")
+> FROM "10_Notes"
+> WHERE contains(parent, this.file.link)
+> SORT file.mtime DESC
+> ``
 > ```

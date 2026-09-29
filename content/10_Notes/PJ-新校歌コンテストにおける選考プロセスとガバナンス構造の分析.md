@@ -83,3 +83,11 @@ tags:
 5. **コンテスト全体の費用検証**：緑翠コンテスト全体の開催に掛かった実費用と予算枠の突合 ==要確認: 決算書または関連予算執行伺い==。
 
 ## 🔗 関連資料・子ノート
+> [!info]- 紐づく検証ノート（本記事を親とするノート一覧）
+> ``dataview
+> LIST 
+>     "📅 " + dateformat(file.mtime, "MM/dd") + " ｜ 🏷️ " + join(tags, ", ")
+> FROM "10_Notes"
+> WHERE contains(parent, this.file.link)
+> SORT file.mtime DESC
+> ``

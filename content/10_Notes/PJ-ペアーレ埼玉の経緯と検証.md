@@ -16,6 +16,12 @@ tags:
 > [!warning] 未着手プレースホルダー
 
 ## 🔗 関連資料・子ノート
-
-
+> [!info]- 紐づく検証ノート（本記事を親とするノート一覧）
+> ``dataview
+> LIST 
+>     "📅 " + dateformat(file.mtime, "MM/dd") + " ｜ 🏷️ " + join(tags, ", ")
+> FROM "10_Notes"
+> WHERE contains(parent, this.file.link)
+> SORT file.mtime DESC
+> ``
 [[地方自治体における公的資産の民間移譲と空間変容の軌跡「ペアーレ入間」から「ペアーレ埼玉」、そして物流・商業複合施設への転換に関する総合研究]]
