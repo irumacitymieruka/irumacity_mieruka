@@ -1,7 +1,7 @@
 ---
 title: PJ-議会だよりを議員と読む会（だよみ会）の入間市への応用検討
 description: 文京区で開催された「区議会だよりを議員と読む会」の事例から、入間市における市民の政治参加・議会可視化への応用を検討するノート
-draft: true
+draft: false
 date: 2026-09-25
 updated: 2026-09-27
 type: project
@@ -32,12 +32,5 @@ tags:
 * 入間市で実施する場合、まずは「いるまオープン議会」で抽出した特定のイシュー（例：学童保育の民営化、茶畑テラス等）に関する議事録をピックアップし、市民有志で読み合わせを行うワークショップ形式が有効ではないか。
 
 ## 🔗 関連資料・子ノート
-> [!info]+ 紐づく検証ノート（本記事を親とするノート一覧）
-> ```dataview
-> LIST 
->     "📅 " + dateformat(file.mtime, "MM/dd") + " ｜ 🏷️ " + join(tags, ", ")
-> FROM "10_Notes"
-> WHERE contains(parent, this.file.link)
-> SORT file.mtime DESC
-> ```
-> ```
+
+* （現在紐づいている子ノートはありません）

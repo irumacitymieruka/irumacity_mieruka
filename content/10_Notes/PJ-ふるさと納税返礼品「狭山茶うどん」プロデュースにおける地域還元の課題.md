@@ -1,7 +1,7 @@
 ---
 title: PJ-ふるさと納税返礼品「狭山茶うどん」プロデュースにおける地域還元の課題
 description: 入間市制60周年記念事業として開発された「狭山茶うどん」の製造プロセスと地域ブランディングに関する仮説検証
-draft: true
+draft: false
 date: 2026-09-25
 updated: 2026-09-27
 type: project
@@ -32,12 +32,5 @@ tags:
 * 地場産業の育成や地元還流よりも、「全国的なPR（名前を売ること）」や「外部の著名なリソースの利用」を優先するプロデュース姿勢は、結果的に地域の独自ブランドを損ない、一過性のイベント消費に終わるのではないかという仮説が成り立つ。
 
 ## 🔗 関連資料・子ノート
-> [!info]+ 紐づく検証ノート（本記事を親とするノート一覧）
-> ```dataview
-> LIST 
->     "📅 " + dateformat(file.mtime, "MM/dd") + " ｜ 🏷️ " + join(tags, ", ")
-> FROM "10_Notes"
-> WHERE contains(parent, this.file.link)
-> SORT file.mtime DESC
-> ```
-> ```
+
+* （現在紐づいている子ノートはありません）

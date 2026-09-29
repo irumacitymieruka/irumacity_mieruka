@@ -30,12 +30,5 @@ tags:
 * 次のアクション: コンテストの応募規約において、プロジェクト関係者（公式MV参加者など）の応募制限規定が存在したかどうかの確認。
 
 ## 🔗 関連資料・子ノート
-> [!info]+ 紐づく検証ノート（本記事を親とするノート一覧）
-> ```dataview
-> LIST 
->     "📅 " + dateformat(file.mtime, "MM/dd") + " ｜ 🏷️ " + join(tags, ", ")
-> FROM "10_Notes"
-> WHERE contains(parent, this.file.link)
-> SORT file.mtime DESC
-> ```
-* [[PJ-新校歌コンテストにおける選考プロセスとガバナンス構造の分析]]
+
+* （現在紐づいている子ノートはありません）
