@@ -27,12 +27,12 @@ https://open-iruma-app.vercel.app/report-cards
 * 課題として、一般質問を行わない（または行えない）役職にある議員への評価方法や、質問以外の議会活動（委員会での発言、議案への賛否など）をどう評価指標に組み込むかが今後のスケーラビリティの論点となる。
 
 ## 🔗 関連資料・子ノート
-> [!info]- 紐づく検証ノート（本記事を親とするノート一覧）
-> ``dataview
+> [!info]+ 紐づく検証ノート（本記事を親とするノート一覧）
+> ```dataview
 > LIST 
 >     "📅 " + dateformat(file.mtime, "MM/dd") + " ｜ 🏷️ " + join(tags, ", ")
 > FROM "10_Notes"
 > WHERE contains(parent, this.file.link)
 > SORT file.mtime DESC
-> ``
+> ```
 > ```

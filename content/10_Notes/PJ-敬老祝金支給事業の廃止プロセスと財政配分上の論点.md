@@ -31,12 +31,12 @@ tags:
 * わずか750万円の事業費を削減する一方で、市庁舎建替え、茶畑テラス、黒須銀行等の大型事業には多額の投資が継続されている。行政の予算配分における優先順位付けの基準が、市民にとって客観的に納得し得るものになっているか検証が必要である。
 
 ## 🔗 関連資料・子ノート
-> [!info]- 紐づく検証ノート（本記事を親とするノート一覧）
-> ``dataview
+> [!info]+ 紐づく検証ノート（本記事を親とするノート一覧）
+> ```dataview
 > LIST 
 >     "📅 " + dateformat(file.mtime, "MM/dd") + " ｜ 🏷️ " + join(tags, ", ")
 > FROM "10_Notes"
 > WHERE contains(parent, this.file.link)
 > SORT file.mtime DESC
-> ``
+> ```
 > ```

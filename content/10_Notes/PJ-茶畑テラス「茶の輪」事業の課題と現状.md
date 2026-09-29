@@ -42,11 +42,11 @@ tags:
   * 他の「稼ぐ市役所」関連事業（SPOBYアプリ等）との採算性や継続判断の基準の比較。
 
 ## 🔗 関連資料・子ノート
-> [!info]- 紐づく検証ノート（本記事を親とするノート一覧）
-> ``dataview
+> [!info]+ 紐づく検証ノート（本記事を親とするノート一覧）
+> ```dataview
 > LIST 
 >     "📅 " + dateformat(file.mtime, "MM/dd") + " ｜ 🏷️ " + join(tags, ", ")
 > FROM "10_Notes"
 > WHERE contains(parent, this.file.link)
 > SORT file.mtime DESC
-> ``
+> ```

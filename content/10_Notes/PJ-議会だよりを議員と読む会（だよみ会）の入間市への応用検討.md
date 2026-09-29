@@ -32,12 +32,12 @@ tags:
 * 入間市で実施する場合、まずは「いるまオープン議会」で抽出した特定のイシュー（例：学童保育の民営化、茶畑テラス等）に関する議事録をピックアップし、市民有志で読み合わせを行うワークショップ形式が有効ではないか。
 
 ## 🔗 関連資料・子ノート
-> [!info]- 紐づく検証ノート（本記事を親とするノート一覧）
-> ``dataview
+> [!info]+ 紐づく検証ノート（本記事を親とするノート一覧）
+> ```dataview
 > LIST 
 >     "📅 " + dateformat(file.mtime, "MM/dd") + " ｜ 🏷️ " + join(tags, ", ")
 > FROM "10_Notes"
 > WHERE contains(parent, this.file.link)
 > SORT file.mtime DESC
-> ``
+> ```
 > ```

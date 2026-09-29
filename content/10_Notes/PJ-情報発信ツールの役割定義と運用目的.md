@@ -28,12 +28,12 @@ tags:
 * ツールの役割（フロー情報のSNS、ストック情報のNote、データベースのオープン議会）が明確化されているため、今後はこれらを有機的に連携させる（例：SNSで問題提起 → Noteで深掘り → オープン議会でファクト確認）導線設計が鍵となる。
 
 ## 🔗 関連資料・子ノート
-> [!info]- 紐づく検証ノート（本記事を親とするノート一覧）
-> ``dataview
+> [!info]+ 紐づく検証ノート（本記事を親とするノート一覧）
+> ```dataview
 > LIST 
 >     "📅 " + dateformat(file.mtime, "MM/dd") + " ｜ 🏷️ " + join(tags, ", ")
 > FROM "10_Notes"
 > WHERE contains(parent, this.file.link)
 > SORT file.mtime DESC
-> ``
+> ```
 > ```

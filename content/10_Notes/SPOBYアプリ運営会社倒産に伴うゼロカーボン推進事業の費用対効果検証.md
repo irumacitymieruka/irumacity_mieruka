@@ -33,12 +33,12 @@ tags:
    もし「継続して運用する必要がない」と判断されるのであれば、「そもそも最初から実施する必要がなかったのではないか」という根本的な事業計画の杜撰さが問われる。この点について、行政への質問を投げかけるための根拠として本件を整理する必要がある。
 
 ## 🔗 関連資料・子ノート
-> [!info]- 紐づく検証ノート（本記事を親とするノート一覧）
-> ``dataview
+> [!info]+ 紐づく検証ノート（本記事を親とするノート一覧）
+> ```dataview
 > LIST 
 >     "📅 " + dateformat(file.mtime, "MM/dd") + " ｜ 🏷️ " + join(tags, ", ")
 > FROM "10_Notes"
 > WHERE contains(parent, this.file.link)
 > SORT file.mtime DESC
-> ``
+> ```
 * [[SPOBY運営会社]]
