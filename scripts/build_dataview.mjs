@@ -85,7 +85,7 @@ async function main() {
 
         // --- Web公開用にローカルのDataviewコールアウトを削除 ---
         // Obsidian上では表示させつつ、Web上では不要なコードブロックを隠すための処理
-        const dataviewRegex = /(?m)^> \[\!info\]- 紐づく検証ノート[^\n]*\r?\n(?:^>.*\r?\n)*/g;
+        const dataviewRegex = /^> \[\!info\][+-] 紐づく検証ノート[^\n]*\r?\n(?:^>.*\r?\n)*/gm;
         if (content.match(dataviewRegex)) {
             const strippedContent = content.replace(dataviewRegex, '');
             fs.writeFileSync(file, strippedContent, 'utf8');
