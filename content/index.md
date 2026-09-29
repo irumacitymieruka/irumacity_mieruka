@@ -12,13 +12,20 @@ tags: [Dashboard]
 
 ---
 
-## 🔗 リンク
-* [いるまオープン議会](https://open-iruma-app.vercel.app/)
-  * 各記事の一覧： [[open_iruma]]
-* [市議会議員通信簿](https://open-iruma-app.vercel.app/report-cards)
-* [予算・財務の記録](https://open-iruma-app.vercel.app/budget)
-* [Notek](https://note.com/iruma_)
-  * 各記事の一覧： [[note]]
+## 🔗 リンク・コンテンツ一覧
+
+* 🏛️ **[いるまオープン議会](https://open-iruma-app.vercel.app/)**
+  入間市の議会情報を検索・閲覧できるWebアプリです。過去の一般質問や答弁を可視化しています。
+  * 📝 関連ノート一覧： [[open_iruma]]
+* 📊 **[市議会議員通信簿](https://open-iruma-app.vercel.app/report-cards)**
+  各市議会議員の活動実績、質問回数、賛否態度などを定量的に評価・可視化したページです。
+* 💰 **[予算・財務の記録](https://open-iruma-app.vercel.app/budget)**
+  入間市の予算使途や財務状況を分析し、分かりやすく図解・解説しています。
+* 📝 **[Note](https://note.com/iruma_)**
+  調査結果や見解をまとめた長文記事・コラムを配信している公式ブログです。
+  * 📝 関連ノート一覧： [[note]]
+* 💬 **[LINEオープンチャット](https://line.me/ti/g2/XlbGmBC-j_x04U9-ftylZa9Slox2KN1fZjp8KA?utm_source=invitation&utm_medium=link_c)**
+  市政に関心のある市民が集まり、意見交換や情報共有を行う匿名のコミュニティです。ぜひご参加ください！
 
 [[各ツールの役割と運用目的（いるまオープン議会等）]]
 [[_00_System/今後の運用改善タスク|プロジェクトの運用改善タスク]] （運用備忘録）
