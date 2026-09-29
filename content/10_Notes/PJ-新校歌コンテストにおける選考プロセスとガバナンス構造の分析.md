@@ -3,6 +3,7 @@ title: PJ-新校歌コンテストにおける選考プロセスとガバナン�
 description: 入間市「緑翠プロジェクト」新校歌コンテストにおける利益相反や審査体制のガバナンス上の課題を分析したノート
 draft: false
 date: 2026-09-23
+updated: 2026-09-28
 type: project
 status: 調査中
 parent:
@@ -82,11 +83,3 @@ tags:
 5. **コンテスト全体の費用検証**：緑翠コンテスト全体の開催に掛かった実費用と予算枠の突合 ==要確認: 決算書または関連予算執行伺い==。
 
 ## 🔗 関連資料・子ノート
-> [!info]- 紐づく検証ノート（本記事を親とするノート一覧）
-> ```dataview
-> LIST 
->     "📅 " + dateformat(file.mtime, "MM/dd") + " ｜ 🏷️ " + join(tags, ", ")
-> FROM "10_Notes"
-> WHERE contains(parent, this.file.link)
-> SORT file.mtime DESC
-> ```

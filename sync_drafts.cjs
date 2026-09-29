@@ -5,6 +5,49 @@ const vaultDir = "D:\\iruma_mielka";
 const targetDirs = ["10_Notes", "20_External_Links"];
 const roots = ["index.md", "note.md", "open_iruma.md"];
 
+function getAllFiles(dir, fileList = []) {
+    if (!fs.existsSync(dir)) return fileList;
+    const files = fs.readdirSync(dir);
+    for (const file of files) {
+        const p = path.join(dir, file);
+        if (fs.statSync(p).isDirectory()) {
+            getAllFiles(p, fileList);
+        } else if (p.endsWith('.md')) {
+            fileList.push(path.resolve(p));
+        }
+    }
+    return fileList;
+}
+
+const allFiles = [];
+for (const d of targetDirs) {
+    getAllFiles(path.join(vaultDir, d), allFiles);
+}
+
+// Build parent to children map
+const parentToChildrenMap = new Map();
+
+for (const filePath of allFiles) {
+    try {
+        const content = fs.readFileSync(filePath, 'utf-8');
+        const fmRegex = /^---\n([\s\S]*?)\n---/;
+        const match = content.match(fmRegex);
+        if (match) {
+            const fmText = match[1];
+            // Extract parent: "[[Parent Name]]" or parent: [[Parent Name]]
+            const parentRegex = /^parent:\s*"?\[\[(.*?)\]\]"?/m;
+            const parentMatch = fmText.match(parentRegex);
+            if (parentMatch) {
+                let parentName = parentMatch[1].split('|')[0].split('#')[0].trim();
+                if (!parentToChildrenMap.has(parentName)) {
+                    parentToChildrenMap.set(parentName, []);
+                }
+                parentToChildrenMap.get(parentName).push(filePath);
+            }
+        }
+    } catch (e) {}
+}
+
 function getLinks(content) {
     const links = [];
     const regex = /\[\[(.*?)\]\]/g;
@@ -49,27 +92,18 @@ while (queue.length > 0) {
                 queue.push(filePath);
             }
         }
+        
+        // Also add children that declare this file as their parent
+        const baseName = path.basename(current, '.md');
+        const children = parentToChildrenMap.get(baseName) || [];
+        for (const childFilePath of children) {
+            if (!visited.has(childFilePath)) {
+                visited.add(childFilePath);
+                queue.push(childFilePath);
+            }
+        }
     } catch (e) {
     }
-}
-
-function getAllFiles(dir, fileList = []) {
-    if (!fs.existsSync(dir)) return fileList;
-    const files = fs.readdirSync(dir);
-    for (const file of files) {
-        const p = path.join(dir, file);
-        if (fs.statSync(p).isDirectory()) {
-            getAllFiles(p, fileList);
-        } else if (p.endsWith('.md')) {
-            fileList.push(path.resolve(p));
-        }
-    }
-    return fileList;
-}
-
-const allFiles = [];
-for (const d of targetDirs) {
-    getAllFiles(path.join(vaultDir, d), allFiles);
 }
 
 let draftCount = 0;

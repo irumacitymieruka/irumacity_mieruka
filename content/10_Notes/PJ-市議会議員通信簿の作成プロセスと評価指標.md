@@ -3,6 +3,7 @@ title: PJ-市議会議員通信簿の作成プロセスと評価指標
 description: 全22名の市議会議員を対象とした通信簿の作成手法と、公約・一般質問を用いた評価指標に関する構造メモ
 draft: false
 date: 2026-09-25
+updated: 2026-09-28
 type: project
 status: 完了
 parent:
@@ -26,11 +27,4 @@ https://open-iruma-app.vercel.app/report-cards
 * 課題として、一般質問を行わない（または行えない）役職にある議員への評価方法や、質問以外の議会活動（委員会での発言、議案への賛否など）をどう評価指標に組み込むかが今後のスケーラビリティの論点となる。
 
 ## 🔗 関連資料・子ノート
-> [!info]- 紐づく検証ノート（本記事を親とするノート一覧）
-> ```dataview
-> LIST 
->     "📅 " + dateformat(file.mtime, "MM/dd") + " ｜ 🏷️ " + join(tags, ", ")
-> FROM "10_Notes"
-> WHERE contains(parent, this.file.link)
-> SORT file.mtime DESC
 > ```

@@ -3,6 +3,7 @@ title: "PJ-敬老祝金支給事業の廃止プロセスと財政配分上の論
 description: "「いるまドック」の評価を起点とした敬老祝金等支給事業の廃止プロセスと、代替手段の欠如に関する行政ガバナンス分析"
 draft: true
 date: 2026-09-25
+updated: 2026-09-27
 type: project
 status: 調査中
 parent: 
@@ -30,11 +31,4 @@ tags:
 * わずか750万円の事業費を削減する一方で、市庁舎建替え、茶畑テラス、黒須銀行等の大型事業には多額の投資が継続されている。行政の予算配分における優先順位付けの基準が、市民にとって客観的に納得し得るものになっているか検証が必要である。
 
 ## 🔗 関連資料・子ノート
-> [!info]- 紐づく検証ノート（本記事を親とするノート一覧）
-> ```dataview
-> LIST 
->     "📅 " + dateformat(file.mtime, "MM/dd") + " ｜ 🏷️ " + join(tags, ", ")
-> FROM "10_Notes"
-> WHERE contains(parent, this.file.link)
-> SORT file.mtime DESC
 > ```
