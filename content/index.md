@@ -16,14 +16,14 @@ tags: [Dashboard]
 
 * 🏛️ **[いるまオープン議会](https://open-iruma-app.vercel.app/)**
   入間市の議会情報を検索・閲覧できるWebアプリです。過去の一般質問や答弁を可視化しています。
-  * 📝 関連ノート一覧： [[open_iruma]]
+  * 📝 関連ノート一覧： [[いるまオープン議会 記事リンク集]]
 * 📊 **[市議会議員通信簿](https://open-iruma-app.vercel.app/report-cards)**
   各市議会議員の活動実績、質問回数、賛否態度などを定量的に評価・可視化したページです。
 * 💰 **[予算・財務の記録](https://open-iruma-app.vercel.app/budget)**
   入間市の予算使途や財務状況を分析し、分かりやすく図解・解説しています。
 * 📝 **[Note](https://note.com/iruma_)**
   調査結果や見解をまとめた長文記事・コラムを配信している公式ブログです。
-  * 📝 関連ノート一覧： [[note]]
+  * 📝 関連ノート一覧： [[Note記事リンク集]]
 * 💬 **[LINEオープンチャット](https://line.me/ti/g2/XlbGmBC-j_x04U9-ftylZa9Slox2KN1fZjp8KA?utm_source=invitation&utm_medium=link_c)**
   市政に関心のある市民が集まり、意見交換や情報共有を行う匿名のコミュニティです。ぜひご参加ください！
 
@@ -36,34 +36,8 @@ tags: [Dashboard]
 現在進行形で分析を進めている最中の検証プロジェクト群です。各プロジェクトの詳細はリンク先で確認できます。
 
 <!-- DATAVIEW_PROJECT_START -->
-```dataview
-TABLE without id file.link AS "プロジェクト", description AS "概要"
-FROM "10_Notes"
-WHERE type = "project" AND status = "調査中" AND draft != true
-SORT file.mtime DESC
-```
-
-<!-- DATAVIEW_PROJECT_END -->
-
----
-
-## 📂 検証完了レポート（アーカイブ）
-（※過去に調査が完了し、体系的にまとまったデータはこちらに格納しています）
-<!-- DATAVIEW_ARCHIVE_START -->
-```dataview
-TABLE description AS "概要", date AS "完了日"
-FROM "10_Notes"
-WHERE status = "完了" AND draft != true
-SORT date DESC
-```
-<!-- DATAVIEW_ARCHIVE_END -->
-
----
-
-##### 今後着手予定リスト
-- [ ] 財政乖離の現状
-- [ ] いるまオープン議会のフォーマット化
-
----
-
-
+| プロジェクト | 概要 |
+| --- | --- |
+| [[PJ-入間市パーパス策定の本来の目的と位置づけの変遷]] | 市役所職員のための指針として策定されたパーパスが、市の最上位計画に位置付けられた経緯についての検証用ノート |
+| [[PJ-市長公約「70億円の財政推計乖離」と選挙公報のミスリード検証]] | 選挙公報に掲げられた「70億円乖離の解消」公約における論理的矛盾とミスリードの構造を分析するノート |
+| [[PJ-新校歌コンテストにおける選考プロセスとガバナンス構造の分析]] | 入間市「緑翠プロジェクト」新校歌コンテストにおける利益相反や審査
