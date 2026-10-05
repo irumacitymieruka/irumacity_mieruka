@@ -1,7 +1,7 @@
 ---
 title: PJ-議会だよりを議員と読む会（だよみ会）の入間市への応用検討
 description: 文京区で開催された「区議会だよりを議員と読む会」の事例から、入間市における市民の政治参加・議会可視化への応用を検討するノート
-draft: false
+draft: true
 date: 2026-09-25
 updated: 2026-09-27
 type: project

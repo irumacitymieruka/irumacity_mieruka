@@ -1,7 +1,7 @@
 ---
 title: PJ-敬老祝金支給事業の廃止プロセスと財政配分上の論点
 description: 「いるまドック」の評価を起点とした敬老祝金等支給事業の廃止プロセスと、代替手段の欠如に関する行政ガバナンス分析
-draft: false
+draft: true
 date: 2026-09-25
 updated: 2026-09-27
 type: project

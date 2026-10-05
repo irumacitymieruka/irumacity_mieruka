@@ -1,7 +1,7 @@
 ---
 title: PJ-ふるさと納税返礼品「狭山茶うどん」プロデュースにおける地域還元の課題
 description: 入間市制60周年記念事業として開発された「狭山茶うどん」の製造プロセスと地域ブランディングに関する仮説検証
-draft: false
+draft: true
 date: 2026-09-25
 updated: 2026-09-27
 type: project

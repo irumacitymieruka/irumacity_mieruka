@@ -1,7 +1,7 @@
 ---
 title: PJ-入間市パーパス策定の本来の目的と位置づけの変遷
 description: 市役所職員のための指針として策定されたパーパスが、市の最上位計画に位置付けられた経緯についての検証用ノート
-draft: false
+draft: true
 date: 2026-09-25
 updated: 2026-09-28
 type: project
